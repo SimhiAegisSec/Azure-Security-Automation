@@ -37,3 +37,10 @@ The policy uses a `modify` effect. When a Storage Account is deployed:
 ## Future Improvements
 * Add logic to send an email alert via **Azure Logic Apps** when a violation is caught.
 * Expand the policy to cover **SQL Database** encryption settings.
+
+## Evidence
+### Policy Configuration
+![Policy Setup]()
+
+### Successful Auto-Remediation
+![Proof of Fix]()
