@@ -1,0 +1,32 @@
+{
+  "properties": {
+    "displayName": "Force Disable Public Access on Storage",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "description": "This policy automatically sets 'allowBlobPublicAccess' to false.",
+    "parameters": {},
+    "policyRule": {
+      "if": {
+        "allOf": [
+          { "field": "type", "equals": "Microsoft.Storage/storageAccounts" },
+          { "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess", "notEquals": false }
+        ]
+      },
+      "then": {
+        "effect": "modify",
+        "details": {
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/17d1049b-9a84-4657-8045-a40a507c91c4"
+          ],
+          "operations": [
+            {
+              "operation": "addOrReplace",
+              "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+              "value": false
+            }
+          ]
+        }
+      }
+    }
+  }
+}
