@@ -40,7 +40,7 @@ The policy uses a `modify` effect. When a Storage Account is deployed:
 
 ## Evidence
 ### Policy Configuration
-![Policy Setup]()
+![Policy Setup](.screenshots/proj2-policy-creation page.png)
 
 ### Successful Auto-Remediation
-![Proof of Fix]()
+![Proof of Fix](.screenshots/proj2-test-storage-account-after-creation.png)
