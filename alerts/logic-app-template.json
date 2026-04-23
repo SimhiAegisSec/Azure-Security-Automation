@@ -1,0 +1,78 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workflows_Logic_App_Designer_name": {
+            "defaultValue": "Logic-App-Designer",
+            "type": "String"
+        },
+        "connections_gmail_externalid": {
+            "defaultValue": "/subscriptions/<subscription id>/resourceGroups/RG-Proj3/providers/Microsoft.Web/connections/gmail",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('workflows_Logic_App_Designer_name')]",
+            "location": "swedencentral",
+            "tags": {
+                "Proj3": "Event Log"
+            },
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "$connections": {
+                            "defaultValue": {},
+                            "type": "Object"
+                        }
+                    },
+                    "triggers": {
+                        "When_an_HTTP_request_is_received": {
+                            "type": "Request",
+                            "kind": "Http"
+                        }
+                    },
+                    "actions": {
+                        "Send_email_(V2)": {
+                            "runAfter": {},
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['gmail']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "body": {
+                                    "To": "p*********@gmail.com",
+                                    "Subject": "SECURITY ALERT: Azure Policy Remediation",
+                                    "Body": "<p class=\"editor-paragraph\">The automated security policy has detected and fixed a storage account misconfiguration in your Azure environment.</p>"
+                                },
+                                "path": "/v2/Mail"
+                            }
+                        }
+                    },
+                    "outputs": {}
+                },
+                "parameters": {
+                    "$connections": {
+                        "value": {
+                            "gmail": {
+                                "id": "/subscriptions/<subscription id>/providers/Microsoft.Web/locations/swedencentral/managedApis/gmail",
+                                "connectionId": "[parameters('connections_gmail_externalid')]",
+                                "connectionName": "gmail",
+                                "connectionProperties": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
