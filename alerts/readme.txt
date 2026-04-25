@@ -38,12 +38,8 @@ Below are the screenshots confirming the successful automation of security remed
 
 ### 1. Activity Log Event
 The alert 'Fired' from Monitor Alerts
-![Activity Log](./alerts/screenshots-mod2/proj2-mod2-alert-fired.png)
+[![Activity Log](./alerts/screenshots-mod2/proj2-mod2-alert-fired.png)](./alerts/screenshots-mod2/proj2-mod2-alert-fired.png)
 
 ### 2. Logic App Execution
 Proof that the Logic App workflow was triggered and completed successfully.
-![Logic App Run History](./alerts/screenshots-mod2/proj2-mod2-logicapp-overview-succeeded-after.png)
-
-### 3. Email Notification
-The final email received via the automated pipeline.
-![Email Notification](./alerts/screenshots-mod2/proj2-mod2-email-alert.png)
+[![Logic App Run History](./alerts/screenshots-mod2/proj2-mod2-logicapp-overview-succeeded-after.png)](./alerts/screenshots-mod2/proj2-mod2-logicapp-overview-succeeded-after.png)
