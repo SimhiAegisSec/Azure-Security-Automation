@@ -18,9 +18,6 @@
             "apiVersion": "2017-07-01",
             "name": "[parameters('workflows_Logic_App_Designer_name')]",
             "location": "swedencentral",
-            "tags": {
-                "Proj3": "Event Log"
-            },
             "properties": {
                 "state": "Enabled",
                 "definition": {
@@ -35,7 +32,36 @@
                     "triggers": {
                         "When_an_HTTP_request_is_received": {
                             "type": "Request",
-                            "kind": "Http"
+                            "kind": "Http",
+                            "inputs": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "status": {
+                                            "type": "string"
+                                        },
+                                        "context": {
+                                            "type": "object",
+                                            "properties": {
+                                                "activityLog": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "resourceId": {
+                                                            "type": "string"
+                                                        },
+                                                        "operationName": {
+                                                            "type": "string"
+                                                        },
+                                                        "caller": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     },
                     "actions": {
@@ -50,8 +76,8 @@
                                 },
                                 "method": "post",
                                 "body": {
-                                    "To": "p*********@gmail.com",
-                                    "Subject": "SECURITY ALERT: Azure Policy Remediation",
+                                    "To": "pratimacd98@gmail.com",
+                                    "Subject": "SECURITY ALERT: Azure Policy Remediation\n",
                                     "Body": "<p class=\"editor-paragraph\">The automated security policy has detected and fixed a storage account misconfiguration in your Azure environment.</p>"
                                 },
                                 "path": "/v2/Mail"
