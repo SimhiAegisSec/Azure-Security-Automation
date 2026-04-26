@@ -46,4 +46,4 @@ Proof that the Logic App workflow was triggered and completed successfully.
 
 ### 3. Email Notification
 The final email received via the automated pipeline.
-[![Email notification](./alerts/screenshots-mod2/proj2-mod2-email-alert.png)](./alerts/screenshots-mod2/proj2-mod2-email-alert.png) 
+[Email notification](https://github.com/SimhiAegisSec/Azure-Security-Automation/blob/main/alerts/screenshots-mod2/proj2-mod2-email-alert.png) 
